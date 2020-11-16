@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Visitantes Vue JS</title>
+        <!--<th:block th:include="layout/header"></th:block>-->
+        <script type="text/javascript" src="/js/funciones.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="css/estilos.css" th:href="@{css/estilos.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <!--Vue JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js">
+</script>
+<!--axios-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    </head>
+    <body>
+<div class="jumbotron text-center">
+   <h1 align="center" class="bg-dark text-white">Visitantes</h1><br/>
+</div>
+<a href="#" th:href="@{/home}" title="regreso">Home</a>
+
+<div id="my_app">
+  
+  <div class="table-responsive">
+      <table class="table table-dark table-striped" style="font-family: Chakra Petch">
+          <thead >
+              <tr>
+                  <th>Comentario</th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-for="data in visitantes">
+                  <td>{{ data.comentario }} </td>
+                  <td>{{ data.fecha }}</td>
+              </tr>
+          </tbody>
+      </table></div>
+</div>
+
+<script>
+var my_app = new Vue({
+  el:'#my_app',
+  data(){
+      return {
+          visitantes:[]
+      };
+  },
+  methods:{
+      getVisitantes(){
+          axios
+          .get('http://localhost:8080/apirest/visitantes')
+          .then((data) => {
+              this.visitantes = data.data
+          });
+      }
+      ,
+      getVisitante(id){
+          axios.get('http.//localhost:8080/apirest/visitantes/'+id)
+      }
+
+  },
+  mounted(){
+      this.getVisitantes()
+  },
+});
+</script>
+
+
+
+<!--<div id="contents">
+  <p>{{ players }}</p>
+  <ul v-for="player in players">
+    <li>
+      <span>{{ player.name }}</span>
+      <span>{{ player.description }}</span>
+    </li>
+  </ul>
+  </div>
+
+<script>
+    var app = new Vue({
+        el: '#contents',
+        data: {
+            players: [
+                { id: "1", 
+                  name: "Boostrap", 
+                  description: "Para estilos CSS." },
+                { id: "2", 
+                  name: "Maria BD", 
+                  description: "Gestor de BD." }
+            ]
+        }
+    });
+</script>
+
+<div id="app">
+  {{ info }}
+</div>
+<script>
+new Vue({
+  el: '#app',
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted () {
+    axios
+      .get('http://localhost:8080/apirest/visitantes')
+      .then(response => (this.info = response))
+  }
+})
+</script>
+-->
+
+
+<!--<div th:include="layout/footer"></div>-->
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Bienvenido</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron text-center">
+        <h1 align="center"><span th:text="${saludo}"></span> </h1>
+        <p align="center"><span th:text="${'Fecha: '+fecha}"></span></p>
+        <br/>
+        <h2 class="bg-dark text-white">Usando Thymeleaf</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="#" th:href="@{/visitantes}" title="visitantes">Visitantes</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/contactos}" title="contactos">Contactos</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/personas}" title="personas">Personas</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/empleados}" title="empleados">Empleados</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/computadoras}" title="computadoas">Computadoras</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/departamentos}" title="departamentos">Departamentos</a></li>
+</ul>
+        <h2 class="bg-dark text-white">Usando Angular JS</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="#" th:href="@{/visitantes/consumirVisitantesRest}" title="visitantes">Visitantes</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/contactos/consumirContactosRest}" title="contactos">Contactos</a></li>
+<li class="list-group-item"><a href="#" th:href="@{/personas/consumirPersonasRest}" title="personas">Personas</a></li>
+</ul>
+ <h2 class="bg-dark text-white">Usando Datatables jQuery</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="#" th:href="@{/tableVisitas}" title="visitantes">Visitantes</a></li>
+<li class="list-group-item"></li>
+</ul>
+
+        <h2 class="bg-dark text-white">Usando Vue JS</h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="#" th:href="@{/visitas}" title="visitantes">Visitantes</a></li>
+<li class="list-group-item"></li>
+</ul>
+
+<h2 class="bg-dark text-white">Usando Javascript </h2>
+<ul class="list-group">
+<li class="list-group-item"><a href="#" th:href="@{/visitantesFetch}" title="visitantes">Visitantes</a></li>
+<li class="list-group-item"></li>
+</ul>
+
+
+    </div>
+    </body>
+</html>

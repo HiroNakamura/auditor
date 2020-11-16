@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta charset="utf-8" />
+        <title>Visitas jQueryTables</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script th:src="@{/js/datatableVisita.js}" src="/js/datatableVisita.js"></script>
+</head>
+<body>
+        <h1>Visitas</h1>
+<div>
+    <p id="info"></p>
+    <a href="#" th:href="@{/home}" title="regreso">Home</a>
+</div>
+        <table id="tableVisitas" class="display" style="width:100%">
+       <thead>
+            <tr>
+                <th>Comentario</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Comentario</td>
+                <td>Fecha</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Comentario</td>
+                <td>Fecha</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

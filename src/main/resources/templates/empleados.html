@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Empleados Thymelaf</title>
+        <!--<th:block th:include="layout/header"></th:block>-->
+        <script type="text/javascript" src="/js/funciones.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="css/estilos.css" th:href="@{css/estilos.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+       
+<div class="jumbotron text-center">
+   <h1 align="center" class="bg-dark text-white">Empleados</h1><br/>
+   <a href="#" th:href="@{/home}" title="regreso">Home</a> 
+   <div th:if="${!empleados.isEmpty()}">
+  <table class="table" id="tablaEmpleados" align="center" border="1" dt:table="true">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Direcci&oacute;n</th>
+                <th>Departamento</th>
+                <th>Computadoras asignadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="emp : ${empleados}">
+                <td th:text="${emp?.nombre}"></td>
+                <td th:text="${emp?.apellidos}"></td>
+                <td th:text="${emp?.direccion.calle+','+emp?.direccion.ciudad+','+emp?.direccion.postal+','+emp?.direccion.pais}"></td>
+                <td th:text="${emp?.departamento.nombre}"></td>
+                <td>
+                    <p th:each="comp : ${emp?.computadoras}">
+                    <span th:text="${comp.modelo}"></span>
+                    <span th:text="${'('+comp.bien+')'}"></span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   </div>
+    
+</div>
+<!--<div th:include="layout/footer"></div>-->
+</body>
+</html>

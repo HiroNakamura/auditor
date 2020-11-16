@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Contactos Thymelaf</title>
+        <!--<th:block th:include="layout/header"></th:block>-->
+        <script type="text/javascript" src="/js/funciones.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="css/estilos.css" th:href="@{css/estilos.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+       
+<div class="jumbotron text-center">
+   <h1 align="center" class="bg-dark text-white">Contactos</h1><br/>
+   <a href="#" th:href="@{/home}" title="regreso">Home</a>
+    <div th:if="${!contactos.isEmpty()}">
+  <table class="table" id="tablaContactos" align="center" border="1" dt:table="true">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha de ingreso</th>
+                <th>Tel&eacute;fonos</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="contacto : ${contactos}">
+                <td th:text="${contacto?.nombre}"></td>
+                <td th:text="${contacto?.fecha}"></td>
+                <td th:text="${contacto?.telefonos}">
+                <td>
+                  <a href="#">
+                    <button type="button" class="btn btn-info">Editar</button>
+                  </a>
+                </td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   </div>
+</div>
+<!--<div th:include="layout/footer"></div>-->
+</body>
+</html>
