@@ -26,4 +26,10 @@ spring:
     enabled: true
     encoding: UTF-8
     suffix: .html
+    
+  data:
+    mongodb: 
+      host: localhost
+      port: 27017
+      database: mensajes
   

@@ -24,6 +24,9 @@ import com.codemonkey.model.Computadora;
 import com.codemonkey.service.ComputadoraService;
 
 
+import com.codemonkey.entity.Mensajes;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -103,6 +106,10 @@ public class RestVisitanteController{
 	public List<Contacto> getContactosCross(){
 		LOGGER.info("--Has entrado a contactos cross");
 		return contactoCrudService.getAllContactos();
+	}
+
+	public List<Mensajes> getMensajes(){
+		return null;
 	}
 
 }
