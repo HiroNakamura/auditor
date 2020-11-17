@@ -41,7 +41,7 @@ public class Mensajes{
         return mensaje;
     }
 
-    public void setId(String mensaje){
+    public void setMensaje(String mensaje){
         this.mensaje = mensaje;
     }
 
