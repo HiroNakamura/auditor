@@ -4,11 +4,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import javax.validation.constraints.NotNull;
 
 @Document(collection = "mensajes")
-public class Mensajes{
+@JsonPropertyOrder({"_id", "idioma","mensaje"})
+public class Mensajes implements java.io.Serializable{
+
+    private static final long serialVersionUID = -7788619177798333712L;
+
     @Id
+    @NotNull
     private String id;
     private String idioma;
     private String mensaje;

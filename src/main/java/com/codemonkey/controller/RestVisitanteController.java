@@ -1,9 +1,19 @@
 package com.codemonkey.controller;
 
+import com.codemonkey.exception.MensajesNotFoundException;
+import com.codemonkey.entity.Mensajes;
+import com.codemonkey.service.MensajesService;
+
+import org.springframework.http.ResponseEntity;
+import javax.validation.Valid;
+
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import io.swagger.annotations.ApiOperation;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -22,8 +32,6 @@ import com.codemonkey.service.EmpleadoService;
 
 import com.codemonkey.model.Computadora;
 import com.codemonkey.service.ComputadoraService;
-
-
 import com.codemonkey.entity.Mensajes;
 
 
@@ -53,7 +61,16 @@ public class RestVisitanteController{
     private ComputadoraService computadoraService;
 
     @Autowired
-    private ContactoCrudService contactoCrudService;
+	private ContactoCrudService contactoCrudService;
+	
+
+	private final MensajesService mensajesService;
+	private Mensajes mensajes;
+	
+	@Autowired
+    public RestVisitanteController(MensajesService mensajesService) {
+        this.mensajesService = mensajesService;
+    }
         
 	
 	//http://localhost:8080/apirest/visitantes
@@ -108,8 +125,50 @@ public class RestVisitanteController{
 		return contactoCrudService.getAllContactos();
 	}
 
-	public List<Mensajes> getMensajes(){
-		return null;
+	/*MongoDB */
+	@RequestMapping(value="/mensajes/{id}",method = RequestMethod.GET)
+    @ApiOperation(value = "Encontrar un mensaje", notes = "Regresa por id" )
+    public ResponseEntity<Mensajes> mensajesById(@PathVariable String id) throws MensajesNotFoundException{
+        LOGGER.info("Obtener mensaje por id");
+        try{
+        	mensajes = mensajesService.findByMensajesId(id);
+        }catch(MensajesNotFoundException e){
+        	mensajes = null;              			
+        }     
+        return ResponseEntity.ok(mensajes);
+        
+    }
+    
+    @RequestMapping(method = RequestMethod.GET)
+     public ResponseEntity<List<Mensajes>> mensajesAll(){
+        LOGGER.info("Obtener todos los mensajes");
+        return ResponseEntity.ok(mensajesService.findAll());
 	}
+
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ApiOperation(value = "Encontrar todos los mensajes", notes = "Devolver todos los mensajes" )
+    public ResponseEntity<List<Mensajes>> mensajesListAll(){
+        LOGGER.info("Obtener todos los mensajes");
+        return ResponseEntity.ok(mensajesService.findAll());
+    }
+
+    @RequestMapping(value="/mensajes/{id}",method = RequestMethod.DELETE)
+    @ApiOperation(value = "Eliminar mensaje", notes = "Eliminar por id")
+    public ResponseEntity<Void> deleteMensajes(@PathVariable String id){
+    	LOGGER.info("Eliminar mensaje con id: "+id);
+        mensajesService.deleteMensajes(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method=RequestMethod.POST)
+    @ApiOperation(value = "Crear nuevo mensaje", notes = "Crear nuevo mensaje")
+    public  ResponseEntity<Mensajes> saveMensaje(@RequestBody @Valid Mensajes mensaje){
+    	LOGGER.info("Guardar nuevo mensaje");
+        return ResponseEntity.ok(mensajesService.saveMensajes(mensajes));
+    }
+
+
+
 
 }
