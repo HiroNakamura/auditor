@@ -63,14 +63,14 @@ public class RestVisitanteController{
     @Autowired
 	private ContactoCrudService contactoCrudService;
 	
-
-	private final MensajesService mensajesService;
+	@Autowired
+	private MensajesService mensajesService;
 	private Mensajes mensajes;
 	
-	@Autowired
+	/*@Autowired
     public RestVisitanteController(MensajesService mensajesService) {
         this.mensajesService = mensajesService;
-    }
+    }*/
         
 	
 	//http://localhost:8080/apirest/visitantes
@@ -141,15 +141,15 @@ public class RestVisitanteController{
     }
 	
 	//http://localhost:8080/apirest/mensajes
-    @RequestMapping(method = RequestMethod.GET)
+    /*@RequestMapping(method = RequestMethod.GET)
      public ResponseEntity<List<Mensajes>> mensajesAll(){
         LOGGER.info("Obtener todos los mensajes");
         return ResponseEntity.ok(mensajesService.findAll());
-	}
+	}*/
 
 
 	////http://localhost:8080/apirest/mensajes
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value="/mensajes",method = RequestMethod.GET)
     @ApiOperation(value = "Encontrar todos los mensajes", notes = "Devolver todos los mensajes" )
     public ResponseEntity<List<Mensajes>> mensajesListAll(){
         LOGGER.info("Obtener todos los mensajes");
@@ -166,7 +166,7 @@ public class RestVisitanteController{
     }
 
 	////http://localhost:8080/apirest/mensajes
-    @RequestMapping(method=RequestMethod.POST)
+    @RequestMapping(value="/mensajes",method=RequestMethod.POST)
     @ApiOperation(value = "Crear nuevo mensaje", notes = "Crear nuevo mensaje")
     public  ResponseEntity<Mensajes> saveMensaje(@RequestBody @Valid Mensajes mensaje){
     	LOGGER.info("Guardar nuevo mensaje");
