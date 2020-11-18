@@ -126,6 +126,7 @@ public class RestVisitanteController{
 	}
 
 	/*MongoDB */
+	//http://localhost:8080/apirest/mensajes/id
 	@RequestMapping(value="/mensajes/{id}",method = RequestMethod.GET)
     @ApiOperation(value = "Encontrar un mensaje", notes = "Regresa por id" )
     public ResponseEntity<Mensajes> mensajesById(@PathVariable String id) throws MensajesNotFoundException{
@@ -138,7 +139,8 @@ public class RestVisitanteController{
         return ResponseEntity.ok(mensajes);
         
     }
-    
+	
+	//http://localhost:8080/apirest/mensajes
     @RequestMapping(method = RequestMethod.GET)
      public ResponseEntity<List<Mensajes>> mensajesAll(){
         LOGGER.info("Obtener todos los mensajes");
@@ -146,6 +148,7 @@ public class RestVisitanteController{
 	}
 
 
+	////http://localhost:8080/apirest/mensajes
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Encontrar todos los mensajes", notes = "Devolver todos los mensajes" )
     public ResponseEntity<List<Mensajes>> mensajesListAll(){
@@ -153,6 +156,7 @@ public class RestVisitanteController{
         return ResponseEntity.ok(mensajesService.findAll());
     }
 
+	//http://localhost:8080/apirest/mensajes/id
     @RequestMapping(value="/mensajes/{id}",method = RequestMethod.DELETE)
     @ApiOperation(value = "Eliminar mensaje", notes = "Eliminar por id")
     public ResponseEntity<Void> deleteMensajes(@PathVariable String id){
@@ -161,14 +165,13 @@ public class RestVisitanteController{
         return ResponseEntity.noContent().build();
     }
 
+	////http://localhost:8080/apirest/mensajes
     @RequestMapping(method=RequestMethod.POST)
     @ApiOperation(value = "Crear nuevo mensaje", notes = "Crear nuevo mensaje")
     public  ResponseEntity<Mensajes> saveMensaje(@RequestBody @Valid Mensajes mensaje){
     	LOGGER.info("Guardar nuevo mensaje");
         return ResponseEntity.ok(mensajesService.saveMensajes(mensajes));
     }
-
-
 
 
 }
