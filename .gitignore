@@ -1,8 +1,8 @@
 /target/
 .mvn/wrapper/maven-wrapper.jar
 
-.gradle
-.mvn
+.gradle/
+.mvn/
 
 ### STS ###
 .apt_generated
