@@ -136,7 +136,16 @@ public class VisitanteController{
     	LOGGER.info("--Personas REST con angular js");
         ModelAndView mav = new ModelAndView("consumirPersonas");
         return mav;
-    }
+	}
+
+	 /*Consumir REST con angular JS*/
+	@GetMapping("/mensajes/consumirMensajesRest")
+	public ModelAndView consumirMensajesRest(){
+		LOGGER.info("--Mensajes REST con angular js");
+		ModelAndView mav = new ModelAndView("consumirMensajes");
+		return mav;
+	}
+	
 
     /*Datatables jquery*/
     @GetMapping("/tableVisitas")
