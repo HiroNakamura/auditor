@@ -2,10 +2,14 @@
 banner:
   charset: UTF-8
   location: banner.txt
+
+server:
+  port : 8080
   
 #CONFIGURATIONS
 spring:
-  #port: 8090
+  application:
+    name: auditor
   jpa:
     generate-ddl: true
     show-sql: false
