@@ -8,7 +8,7 @@
         <title>Visitantes Thymeleaf</title>
         <!--<th:block th:include="layout/header"></th:block>-->
         
-        <link rel="stylesheet" type="text/css" media="all" href="../css/estilos.css" th:href="@{../css/estilos.css}" />
+        <!--<link rel="stylesheet" type="text/css" media="all" href="../css/estilos.css" th:href="@{../css/estilos.css}" />-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -20,19 +20,32 @@
    <h1 align="center" class="bg-dark text-white">Visitantes</h1><br/>
    <a href="#" th:href="@{/home}" title="regreso">Home</a>
 
+   <h2>Visitantes</h2>
    <div>
-    <table border="1" class="striped">
+    <table border="1" class="striped" align="center">
         <thead>
           <tr>
             <th>Fecha de registro</th>
             <th>Comentario</th>
           </tr>
         </thead>
-        <tbody id="contenido">
+        <tbody id="contenidoVisitantes">
         </tbody>
       </table>
    </div>
-    
+<h2>Mensajes</h2>
+   <div>
+    <table border="1" class="striped" align="center">
+        <thead>
+          <tr>
+            <th>Idioma</th>
+            <th>Mensaje</th>
+          </tr>
+        </thead>
+        <tbody id="contenidoMensajes">
+        </tbody>
+      </table>
+   </div>
    <script type="text/javascript" th:src="@{/js/funciones.js}" src="/js/funciones.js"></script>
 </div>
 <!--<div th:include="layout/footer"></div>-->

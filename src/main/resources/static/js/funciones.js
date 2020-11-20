@@ -1,9 +1,8 @@
 
 let Controlador = {
-
     visitantes: function(){
-        
-        const contenidoVisitantes = document.querySelector("#contenido");
+        const contenidoVisitantes = document.querySelector("#contenidoVisitantes");
+        const contenidoMensajes = document.querySelector("#contenidoMensajes");
         console.log("Javascript activo y funcionando!!")
 
         fetch('http://localhost:8080/apirest/visitantes')
@@ -21,14 +20,29 @@ let Controlador = {
             </tr>
             `
            }
-        });
+        }).catch(error=>console.error(`Ha ocurrido un error: ${error}`));
 
     },
-    computadoras: function(){
-        console.log("Hola, amigos");
+    mensajes: function(){
+        console.log("Mensajes desde MongoDB");
+        fetch('http://localhost:8080/apirest/mensajes')
+        .then(response =>{
+            return response.json()
+        })
+        .then(response =>{
+            contenidoMensajes.innerHTML ="";
+            console.log(response)
+            for(let dato of response){
+                contenidoMensajes.innerHTML +=`
+                <tr>
+              <td>${dato.idioma}</td>
+              <td>${dato.mensaje}</td>
+            </tr>
+            `
+           }
+        }).catch(error=>console.error(`Ha ocurrido un error: ${error}`));
+
     }
-}
-
-
+};
 window.addEventListener("load", Controlador.visitantes);
-window.addEventListener("load", Controlador.computadoras);
+window.addEventListener("load", Controlador.mensajes);

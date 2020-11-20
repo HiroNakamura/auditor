@@ -148,7 +148,7 @@ public class RestVisitanteController{
 	}*/
 
 
-	////http://localhost:8080/apirest/mensajes
+	//http://localhost:8080/apirest/mensajes
     @RequestMapping(value="/mensajes",method = RequestMethod.GET)
     @ApiOperation(value = "Encontrar todos los mensajes", notes = "Devolver todos los mensajes" )
     public ResponseEntity<List<Mensajes>> mensajesListAll(){
