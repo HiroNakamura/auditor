@@ -49,7 +49,7 @@ public class VisitanteController{
 	//http://localhost:8080/home
 	@GetMapping("/home")
 	public String goHome(Model model){
-		LOGGER.info("--Home");
+		LOGGER.info("--Entramos a http://localhost:8080/home");
 		LocalDate fecha = LocalDate.now();
 		model.addAttribute("fecha",fecha);
 		model.addAttribute("saludo",new String("Bienvenido al sitio"));
@@ -67,7 +67,7 @@ public class VisitanteController{
 	//http://localhost:8080/vistantesFetch
 	@GetMapping("/visitantesFetch")
 	public String getVisitantesFetch(){
-		LOGGER.info("--Visitantes");
+		LOGGER.info("--Visitantes fetch");
 		return "visitantesFetch";
 	}
 
