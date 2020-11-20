@@ -18,22 +18,22 @@ public class MensajesMongoServiceImpl implements MensajesMongoService{
     
     @Override
     public Mensajes create(Mensajes mensajes){
-        Mensajes miMensaje = new Mensajes();
-        //miMensaje.setId(UUID.randomUUID().toString());
-        miMensaje.setId(mensajes.getId());
-        miMensaje.setIdioma(mensajes.getIdioma());
-        miMensaje.setMensaje(mensajes.getMensaje());
-		return mensajesMongoRepository.save(miMensaje);
+      Mensajes miMensaje = new Mensajes();
+      miMensaje.setId(UUID.randomUUID().toString());
+      miMensaje.setIdioma(mensajes.getIdioma());
+      miMensaje.setMensaje(mensajes.getMensaje());
+		  return mensajesMongoRepository.save(miMensaje);
     }
 
     @Override
     public Mensajes read(Mensajes mensajes) {
-		return mensajes;
+		  return mensajes;
     }
     
     @Override
     public List<Mensajes> readAll() {
-		return mensajesMongoRepository.findAll();
-	}
+		 return mensajesMongoRepository.findAll();
+    }
+    
 
 }
