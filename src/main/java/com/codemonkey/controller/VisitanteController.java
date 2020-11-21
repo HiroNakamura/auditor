@@ -5,13 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.time.LocalDate;
 import com.codemonkey.model.Visitante;
 import com.codemonkey.service.VisitanteService;
@@ -25,9 +23,6 @@ import com.codemonkey.service.PersonaService;
 import com.codemonkey.service.ComputadoraService;
 import com.codemonkey.service.DepartamentoService;
 import com.codemonkey.service.MensajesMongoService;
-
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -175,10 +170,10 @@ public class VisitanteController{
         return "visitas";
 	}
 	
-	/*Para MongoDb*/
+	/*Para MongoDb con Thymeleaf*/
 	@GetMapping("/mongo/mensajes")
 	public String getMensajes(Model model){
-		LOGGER.info("--Mensajes MongoDb con REST");
+		LOGGER.info("--Mensajes MongoDb con Thymeleaf");
 		model.addAttribute("mensajes",mensajesMongoService.readAll());
 		return "mensajes";
 	}
